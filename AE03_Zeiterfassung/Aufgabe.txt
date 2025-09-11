@@ -1,0 +1,52 @@
+Shape 
+
+Arbeitsauftrag: Erstellung eines GUI-Programms zur Anwesenheitserfassung 
+
+Aufgabenstellung: 
+Entwickeln Sie ein GUI-Programm in C#, das die Anwesenheit von Teilnehmern erfasst. 
+Für jeden Teilnehmer wird ein Button angezeigt, der den Namen der Person trägt. 
+Die Anwesenheitszeiten werden durch das Drücken des Buttons erfasst und in eine Datei geschrieben. 
+
+Shape 
+
+Funktionsbeschreibung: 
+
+Anzeigelogik: 
+Jeder Teilnehmer hat einen eigenen Button, der seinen Namen anzeigt. 
+Zu Beginn ist der Button rot. 
+
+Wenn der Button angeklickt wird: 
+Der Button wechselt die Farbe auf grün. 
+Die aktuelle Zeit wird als "kommt" in eine Datei geschrieben. 
+
+Beim erneuten Klicken des Buttons: 
+Der Button wechselt wieder auf rot. 
+Die aktuelle Zeit wird als "geht" in dieselbe Datei geschrieben. 
+
+Datenaufzeichnung: 
+Die Datei soll im CSV-Format geführt werden. 
+Jede Zeile der Datei soll folgende Informationen enthalten: 
+
+Name 
+Vorname 
+Status ("kommt"/"geht") 
+Datum und Uhrzeit 
+
+Beispiel für eine Zeile: 
+Max; Mustermann; kommt; 17.06.2024 08:15:32 
+
+Klassendesign: 
+Erstelle eine eigene Klasse, die von der Klasse Button erbt. 
+Diese Klasse soll die Logik zur Farbumstellung und zur Datei-Logik enthalten. 
+Die Klasse soll Methoden implementieren, um den Status des Buttons zu wechseln und die Daten in die Datei zu schreiben. 
+Für den Dateizugriff soll es eine eigene Klasse „IOSystem“ geben. 
+
+User
+Button <- ButtonStatus
+IOSystem
+
+Daten laden: 
+Die Namen der Teilnehmer sollen aus einer alten Logdatei oder einer Dummydatei gelesen werden können. 
+Auf doppelte Namen soll geachtet werden. 
+
+ 
