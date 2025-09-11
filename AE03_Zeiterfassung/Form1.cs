@@ -15,7 +15,6 @@ namespace AE03_Zeiterfassung
             foreach (User user in users)
             {
                 SuperButton superButton = new SuperButton(user, mainIO, rtbLog);
-                //superButton.Location = new Point(10, 10);
                 superButton.Size = new Size(150, 50);
                 superButton.BackColor = Color.Red;
                 superButton.Text = $"{user.lastName}, {user.firstName}\nID: {user.id}";
