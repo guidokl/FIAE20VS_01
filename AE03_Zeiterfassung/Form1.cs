@@ -9,16 +9,11 @@ namespace AE03_Zeiterfassung
             InitializeComponent();
 
             IOSystem mainIO = new IOSystem();
-
             List<User> users = mainIO.LoadUsers();
 
             foreach (User user in users)
             {
                 SuperButton superButton = new SuperButton(user, mainIO, rtbLog);
-                superButton.Size = new Size(150, 50);
-                superButton.BackColor = Color.Red;
-                superButton.Text = $"{user.lastName}, {user.firstName}\nID: {user.id}";
-
                 flowLayoutPanel1.Controls.Add(superButton);
             }
         }

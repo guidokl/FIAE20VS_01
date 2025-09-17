@@ -3,41 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace AE03_Zeiterfassung.Classes
 {
     internal class SuperButton : Button
     {
-        public User user;
-        public IOSystem mainIO;
-        public RichTextBox rtbLog;
+        // private set -> lesen ist von außen erlaubt, setzen nur innerhalb der Klasse
+        public User User { get; private set; }
+        public IOSystem MainIO { get; private set; }
+        public RichTextBox RtbLog { get; private set; }
 
         public SuperButton(User user, IOSystem mainIO, RichTextBox rtbLog)
         {
             this.Click += SuperButton_Click;
-            this.user = user;
-            this.mainIO = mainIO;
-            this.rtbLog = rtbLog;
+            this.User = user;
+            this.MainIO = mainIO;
+            this.RtbLog = rtbLog;
+
+            this.Size = new Size(150, 50);
+            this.BackColor = User.IsPresent ? Color.Green : Color.Red;
+            this.Text = $"{User.LastName}, {User.FirstName}\nID: {User.Id}";
         }
 
         private void SuperButton_Click(object sender, EventArgs e)
         {
             ToggleStatus();
-            mainIO.WriteUserState(user);
-            mainIO.ParseLog(rtbLog);
+            MainIO.WriteUserState(User);
+            MainIO.ParseLog(RtbLog);
         }
 
-        public void ToggleStatus()
+        private void ToggleStatus()
         {
-            user.isPresent = !user.isPresent;
-            if (user.isPresent)
-            {
-                this.BackColor = Color.Green;
-            }
-            else
-            {
-                this.BackColor = Color.Red;
-            }
+            User.IsPresent = !User.IsPresent;
+            this.BackColor = User.IsPresent ? Color.Green : Color.Red;
         }
     }
 }

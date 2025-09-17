@@ -8,9 +8,27 @@ namespace AE03_Zeiterfassung.Classes
 {
     internal class User
     {
-        public int id;
-        public string firstName;
-        public string lastName;
-        public bool isPresent;
+       public int Id { get; set; }
+       public string FirstName { get; set; }
+       public string LastName { get; set; }
+       public  bool IsPresent { get; set; } = false;
+
+        //public string FirstName => this.firstName;
+        //public string LastName => this.lastName;
+
+        public User(int id, string firstName, string lastName, bool isPresent)
+        {
+            this.Id = id;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.IsPresent = isPresent;
+        }
+
+        public User(int id, string firstName, string lastName)
+        {
+            this.Id = id;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+        }
     }
 }

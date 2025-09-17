@@ -19,13 +19,7 @@ namespace AE03_Zeiterfassung.Classes
                 // ensure line contains at least two data entries
                 if (parts.Length >= 2)
                 {
-                    User user = new User()
-                    {
-                        id = userid,
-                        firstName = parts[0].Trim(),
-                        lastName = parts[1].Trim(),
-                        isPresent = false
-                    };
+                    User user = new User(userid, parts[0].Trim(), parts[1].Trim());
                     users.Add(user);
                 }
                 userid++;
@@ -35,8 +29,8 @@ namespace AE03_Zeiterfassung.Classes
 
         public void WriteUserState(User user)
         {
-            string action = user.isPresent ? "kommt" : "geht";
-            string timelogEntry = $"{DateTime.Now};{user.id};{user.lastName};{user.firstName};{action}";
+            string action = user.IsPresent ? "kommt" : "geht";
+            string timelogEntry = $"{DateTime.Now};{user.Id};{user.LastName};{user.FirstName};{action}";
             File.AppendAllText("./Data/timelog.txt", timelogEntry + Environment.NewLine);
         }
 
